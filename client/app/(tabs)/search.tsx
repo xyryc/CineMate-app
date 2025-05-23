@@ -21,6 +21,14 @@ const Search = () => {
     const timeOutId = setTimeout(async () => {
       if (searchQuery.trim()) {
         await loadMovies();
+
+        if (movies.length > 0) {
+          const result = await axios.post(
+            `${process.env.EXPO_PUBLIC_API_BASE_URL}/metrics`,
+            movies[0]
+          );
+          console.log(result);
+        }
       } else {
         reset();
       }

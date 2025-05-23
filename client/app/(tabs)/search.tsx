@@ -5,6 +5,7 @@ import { fetchMovies } from "@/services/api";
 import useFetch from "@/services/useFetch";
 import React, { useEffect, useState } from "react";
 import { ActivityIndicator, FlatList, Image, Text, View } from "react-native";
+import axios from "axios";
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState("");

@@ -5,7 +5,8 @@ const {
   createMetrics,
 } = require("../controllers/metricsController");
 
-router.get("/", getMetrics);
-router.post("/", createMetrics);
+router.get("/all", getMetrics);
+router.post("/create", createMetrics);
+router.put("/:id", updateMetrics)
 
 module.exports = router;

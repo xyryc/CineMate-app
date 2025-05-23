@@ -37,3 +37,23 @@ exports.createMetrics = async (req, res) => {
     res.status(400).json({ message: err.message });
   }
 };
+
+exports.updateMetrics = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const updated = await Metrics.findByIdAndUpdate(
+      id,
+      { $inc: { count: 1 } },
+      { new: true }
+    );
+
+    if (!updated) {
+      return res.status(404).json({ message: "Metrics not found" });
+    }
+
+    res.json(updated);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+};
